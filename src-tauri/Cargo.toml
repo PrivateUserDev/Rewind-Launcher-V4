@@ -1,0 +1,39 @@
+[package]
+name = "Rewind"
+version = "0.0.15"
+description = "Rewind Official Launcher created with Tauri by mars, and privateuserttv"
+authors = ["mars, privateuserttv"]
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+# The `_lib` suffix may seem redundant but it is necessary
+# to make the lib name unique and wouldn't conflict with the bin name.
+# This seems to be only an issue on Windows, see https://github.com/rust-lang/cargo/issues/8519
+name = "rewind_launcher_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+tauri-plugin-opener = "2"
+tauri-plugin-dialog = "2.0.0"
+tauri-plugin-shell = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+reqwest = { version = "0.11", features = ["json", "blocking", "stream"] }
+futures-util = "0.3"
+regex = "1.11.1"
+tauri-plugin-deep-link = "0.1.2"
+urlencoding = "2.1.0"
+base64 = "0.21"
+tokio = { version = "1", features = ["full"] }
+sysinfo = "0.30"
+winapi = { version = "0.3", features = ["winbase", "handleapi", "processthreadsapi", "winuser", "memoryapi"] }
+lazy_static = "1.4"
+discord-rich-presence = "0.2.4"
+
+

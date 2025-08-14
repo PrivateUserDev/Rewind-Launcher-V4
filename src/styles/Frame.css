@@ -1,0 +1,89 @@
+.tauriFrameContainer {
+    display: flex;
+    flex-direction: column;
+    background-color: none;
+    user-select: none;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    z-index: 9999;
+  }
+  
+  .tauriFrame {
+    height: 23px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--theme-titlebar);
+    backdrop-filter: blur(10px);
+    -webkit-app-region: drag;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    padding: 0;
+  }
+  
+  .tauriFrameInner {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0;
+    -webkit-app-region: drag;
+  }
+  
+  .tauriFrameHeader {
+    font-size: 13px; 
+    color: rgba(255, 255, 255, 1);
+    font-weight: bolder;
+    letter-spacing: -0.2px;
+    padding-left: 12px;
+  }
+  
+  .tauriFrameControls {
+    display: flex;
+    margin-left: auto;
+    
+    -webkit-app-region: no-drag;
+  }
+  
+  .tauriFrameAction {
+    background: none;
+    border: none;
+    color: white;
+    font:bolder;
+    width: 46px;
+    height: 23px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    -webkit-app-region: no-drag;
+  }
+  
+  .tauriFrameAction:hover {
+    background-color: rgba(105, 183, 255, 0.2);
+    color: white;
+  }
+  
+  .tauriFrameAction.close:hover {
+    background-color: rgba(232, 17, 35, 0.9);
+    color: white;
+  }
+  
+  .tauriFrameAction svg {
+    width: auto;
+    height: auto;
+    
+    stroke-width: 1;
+    opacity: 1;
+  }
+  
+  .tauriFrameAction:hover svg {
+    opacity: 1;
+  }
+  
+  .tauriFrameAction.close svg {
+    width: 20px; 
+    height: 20px; 
+  }
+  

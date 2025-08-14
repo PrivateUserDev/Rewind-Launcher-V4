@@ -1,0 +1,47 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "Rewind",
+  "version": "0.0.15",
+  "identifier": "mars",
+  "build": {
+    "beforeDevCommand": "bun run dev",
+    "devUrl": "http://localhost:1420",
+    "beforeBuildCommand": "bun run build",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "windows": [
+      {
+        "title": "Rewind",
+        "width": 1240,
+        "height": 800,
+        "decorations": false,
+        "resizable": false,
+        "center": true,
+        "fullscreen": false,
+        "maximizable": false
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "icon": [
+      "icons/icon.png",
+      "icons/icon.ico"
+    ]
+  },
+  "plugins": {
+    "deep-link": {
+      "mobile": [
+        { "host": "backend-services-prod.privateuser.xyz", "pathPrefix": ["/auth"] }
+      ],
+      "desktop": {
+        "schemes": ["rewindlauncher://", "rewindlauncher"]
+      }
+    }
+  }
+}

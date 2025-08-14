@@ -1,0 +1,499 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --theme-primary: #6366f1;
+  --theme-secondary: #8b5cf6;
+  --theme-accent: #06b6d4;
+  --theme-background: #0f0f0f;
+  --theme-surface: #222222;
+  --theme-text: #ffffff;
+  --theme-text-secondary: #ffffff60;
+  --theme-border: #ffffff14;
+  --theme-titlebar: rgba(18, 18, 18, 0.95);
+  --theme-sidebar: #222222/20;
+}
+
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Bricolage Grotesque', sans-serif;
+  }
+}
+
+@layer components {
+  .floating-square {
+    @apply absolute w-40 h-40 rounded-[2rem] opacity-[0.12];
+    background: linear-gradient(135deg, #2a2a2a 0%, #3a3a3a 100%);
+    animation: float 25s infinite linear;
+    will-change: transform, opacity;
+    backdrop-filter: blur(100px);
+  }
+
+  @keyframes fadeSlideUp {
+    0% {
+      opacity: 0;
+      transform: translateY(30px) scale(0.95);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0px) scale(1);
+    }
+  }
+
+  .animate-fade-slide-up {
+    animation: fadeSlideUp 0.4s ease-out forwards;
+  }
+
+  .animate-fade-slide-up-delay-1 {
+    animation: fadeSlideUp 0.4s ease-out 0.1s both;
+  }
+
+  .animate-fade-slide-up-delay-2 {
+    animation: fadeSlideUp 0.4s ease-out 0.2s both;
+  }
+
+  .animate-fade-slide-up-delay-3 {
+    animation: fadeSlideUp 0.4s ease-out 0.3s both;
+  }
+
+  .animate-fade-slide-up-delay-4 {
+    animation: fadeSlideUp 0.4s ease-out 0.4s both;
+  }
+
+  .login-container {
+    @apply fixed inset-0 flex items-center justify-center z-10;
+  }
+
+  @keyframes slide-and-bounce {
+  0% {
+    opacity: 0;
+    transform: translate3d(120%, 0, 0);
+  }
+
+  25% {
+    opacity: 1;
+    transform: translate3d(-4%, 0, 0);
+  }
+
+  45% {
+    transform: translate3d(2%, 0, 0);
+  }
+
+  65% {
+    transform: translate3d(-1%, 0, 0);
+  }
+  
+  85% {
+    transform: translate3d(0.25%, 0, 0);
+  }
+  
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.featured-slide-in {
+  animation: slide-and-bounce 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  will-change: transform, opacity;
+}
+
+  .login-panel {
+    @apply bg-white/10 rounded-md p-6 shadow-2xl w-[600px]
+           border border-white/[0.15] backdrop-blur-xl;
+    transition: all 0.3s ease-in-out;
+    min-height: 330px;
+  }
+
+  .animate-slide-bounce {
+    animation: slide-and-bounce 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    will-change: transform, opacity;
+  }
+
+  @keyframes slide-in-from-right {
+    0% {
+      opacity: 0;
+      transform: translateX(150%) scale(0.9);
+    }
+
+    50% {
+      opacity: 1;
+      transform: translateX(-50%) scale(1.05);
+    }
+
+    70% {
+      transform: translateX(-50%) scale(1);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateX(-50%) scale(1);
+    }
+  }
+
+  @keyframes slide-out-to-left {
+    0% {
+      opacity: 1;
+      transform: translateX(-50%) scale(1);
+    }
+
+    30% {
+      opacity: 0.8;
+      transform: translateX(-50%) scale(0.9);
+    }
+
+    100% {
+      opacity: 0;
+      transform: translateX(-200%) scale(0.7);
+    }
+  }
+
+  .animate-slide-in-right {
+    animation: slide-in-from-right 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  }
+
+  .animate-slide-out-left {
+    animation: slide-out-to-left 0.25s ease-in forwards;
+  }
+
+  @keyframes slide-in-drop {
+    0% {
+      opacity: 0;
+      transform: translateX(-100%) scale(0.8);
+    }
+
+    40% {
+      opacity: 1;
+      transform: translateX(0%) scale(1.05);
+    }
+
+    60% {
+      transform: translateX(0%) scale(1);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateX(0%) scale(1);
+    }
+  }
+
+  .animate-slide-in-drop {
+    animation: slide-in-drop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  }
+
+  .login-title {
+    font-size: 56px;
+    color: #fff;
+    text-align: center;
+    margin-bottom: -3px;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 700;
+    letter-spacing: -1px;
+    background: linear-gradient(to bottom, 
+      rgba(255, 255, 255, 1) 0%,
+      rgba(255, 255, 255, 0.9) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 60px rgba(255, 255, 255, 0.1);
+  }
+
+  .login-description {
+    @apply text-white/60 text-center mb-5
+           text-base leading-relaxed; 
+    font-family: 'Bricolage Grotesque', sans-serif;
+    max-width: 320px;  
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .discord-button {
+    @apply w-[200px] bg-[#141414] hover:bg-[#1a1a1a]
+           text-white font-medium py-2 px-4 rounded-lg
+           flex items-center
+           transition-all duration-200
+           hover:scale-[1.02] active:scale-[0.98]
+           text-base border border-white/[0.08];
+  }
+
+  .discord-button span {
+    @apply flex-grow text-left;
+  }
+
+  .arrow-icon {
+    @apply w-6 h-6 text-white/70 flex-shrink-0;
+  }
+}
+
+.floating-square:nth-child(1) { 
+  animation-delay: 0s; 
+  background: linear-gradient(135deg, #2a2a2a 0%, #3d3d3d 100%);
+}
+.floating-square:nth-child(2) { 
+  animation-delay: -5s;
+  background: linear-gradient(135deg, #303030 0%, #3a3a3a 100%);
+}
+.floating-square:nth-child(3) { 
+  animation-delay: -10s;
+  background: linear-gradient(135deg, #353535 0%, #2a2a2a 100%);
+}
+.floating-square:nth-child(4) { 
+  animation-delay: -15s;
+  background: linear-gradient(135deg, #3a3a3a 0%, #303030 100%);
+}
+
+@keyframes float {
+  0% {
+    transform: rotate(0deg) translate(0, 0) scale(1);
+    opacity: 0.08;
+  }
+  25% {
+    transform: rotate(90deg) translate(150px, 150px) scale(1.75);
+    opacity: 0.12;
+  }
+  50% {
+    transform: rotate(180deg) translate(0, 300px) scale(1);
+    opacity: 0.08;
+  }
+  75% {
+    transform: rotate(270deg) translate(-150px, 150px) scale(1.75);
+    opacity: 0.12;
+  }
+  100% {
+    transform: rotate(360deg) translate(0, 0) scale(1);
+    opacity: 0.08;
+  }
+}
+
+@keyframes panel-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes title-fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes description-fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes button-fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-panel-fade-in {
+  animation: panel-fade-in 0.6s ease-out forwards;
+}
+
+.animate-title-fade-in {
+  animation: title-fade-in 0.6s ease-out 0.3s forwards;
+  opacity: 0;
+}
+
+.animate-description-fade-in {
+  animation: description-fade-in 0.6s ease-out 0.6s forwards;
+  opacity: 0;
+}
+
+.animate-button-fade-in {
+  animation: button-fade-in 0.6s ease-out 0.9s forwards;
+  opacity: 0;
+}
+
+@keyframes subtle-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.005); }
+}
+
+.App {
+  background-color: var(--theme-background);
+  min-height: 100vh;
+  position: relative;
+}
+
+.loading-spinner {
+  @apply border-[8px] border-white/20 rounded-full;
+  border-top-color: white;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.discord-button:disabled {
+  @apply opacity-70 cursor-not-allowed hover:scale-100 hover:bg-discord;
+}
+
+.discord-button {
+  @apply flex items-center justify-center gap-2 w-full py-2;
+}
+
+.transition-opacity {
+  transition-property: opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.duration-500 {
+  transition-duration: 500ms;
+}
+
+@keyframes scale-fade-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateY(20px);
+  }
+  60% {
+    transform: scale(1.03) translateY(-5px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-scale-fade {
+  animation: scale-fade-in 0.7s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+@keyframes slide-and-bounce {
+  0% {
+    opacity: 0;
+    transform: translate3d(120%, 0, 0);
+  }
+  
+  25% {
+    opacity: 1;
+    transform: translate3d(-4%, 0, 0);
+  }
+  
+  45% {
+    transform: translate3d(2%, 0, 0);
+  }
+  
+  65% {
+    transform: translate3d(-1%, 0, 0);
+  }
+  
+  85% {
+    transform: translate3d(0.25%, 0, 0);
+  }
+  
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.animate-home {
+  animation: slide-and-bounce 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  will-change: transform, opacity;
+}
+
+@keyframes slideRight {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s ease-in-out forwards;
+}
+
+@keyframes bounce-up {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 120%, 0);
+  }
+  
+  25% {
+    opacity: 1;
+    transform: translate3d(0, -10%, 0);
+  }
+  
+  45% {
+    transform: translate3d(0, 5%, 0);
+  }
+  
+  65% {
+    transform: translate3d(0, -2%, 0);
+  }
+  
+  85% {
+    transform: translate3d(0, 0.5%, 0);
+  }
+  
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.animate-bounce-up {
+  animation: bounce-up 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  will-change: transform, opacity;
+}
+
+@keyframes slide-in {
+  0% {
+    transform: translateX(100%);
+  }
+  60% {
+    transform: translateX(-5%);
+  }
+  80% {
+    transform: translateX(2%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-in {
+  animation: slide-in 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  will-change: transform;
+}
